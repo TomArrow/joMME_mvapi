@@ -9,6 +9,7 @@
 #include "../game/q_shared.h"
 #include "qmalloc.h"
 
+#ifdef Q3_VM
 
 unsigned char arena[MALLOC_ARENA];
 
@@ -303,5 +304,6 @@ main()
   test_malloc();
   return 0;
 }
+#endif
 
 #endif

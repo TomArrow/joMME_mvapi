@@ -1,6 +1,8 @@
 #ifndef _QMALLOC_H_
 #define _QMALLOC_H_
 
+#ifdef Q3_VM
+
 #ifndef NULL
 #define NULL (0)
 #endif
@@ -15,5 +17,6 @@ void free(void *ptr);
 void *realloc(void *ptr, size_t size);
 void *alloca(size_t size);
 void alloca_reset();
+#endif
 
 #endif
