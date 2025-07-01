@@ -4322,7 +4322,8 @@ void CG_DoSaber(vec3_t origin, vec3_t dir, float length, saber_colors_t color, i
 	// saber ends glow mod
 	if (cg_saberEndsGlow.integer) {
 		saber.customShader = cgs.media.saberEndsGlowShader;
-		VectorCopy(rgb, saber.shaderRGBA);
+		for (i = 0; i < 3; i++)
+			saber.shaderRGBA[i] = rgb[i];
 		saber.shaderRGBA[3] = 0xff;
 
 		//[/RGBSabers]
