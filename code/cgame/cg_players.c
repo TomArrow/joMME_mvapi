@@ -4319,6 +4319,19 @@ void CG_DoSaber(vec3_t origin, vec3_t dir, float length, saber_colors_t color, i
 
 	trap_R_AddRefEntityToScene( &saber );
 
+	// saber ends glow mod
+	if (cg_saberEndsGlow.integer) {
+		saber.customShader = cgs.media.saberEndsGlowShader;
+		VectorCopy(rgb, saber.shaderRGBA);
+		saber.shaderRGBA[3] = 0xff;
+
+		//[/RGBSabers]
+		saber.renderfx = rfx | RF_SABERGLOWENDS;
+
+		trap_R_AddRefEntityToScene(&saber);
+	}
+	
+
 	// Do the hot core
 	VectorMA( origin, length, dir, saber.origin );
 	VectorMA( origin, -1, dir, saber.oldorigin );

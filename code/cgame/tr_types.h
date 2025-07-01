@@ -47,6 +47,7 @@
 #define RF_DISINTEGRATE1	0x20000	// does a procedural hole-ripping thing.
 #define RF_DISINTEGRATE2	0x40000	// does a procedural hole-ripping thing with scaling at the ripping point
 
+#define RF_SABERGLOWENDS	0x80000	// hack: draws the shader at top and bottom of saber, and bigger than usual
 
 
 // refdef flags
