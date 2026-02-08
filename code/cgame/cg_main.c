@@ -664,6 +664,8 @@ vmCvar_t	mov_absorbColour;
 vmCvar_t	mov_protectColour;
 vmCvar_t	mov_rageColour;
 
+vmCvar_t	mov_6degreesoffreedom;
+
 vmCvar_t	mme_demoFileName;
 
 vmCvar_t	fx_Vibrate;
@@ -879,6 +881,7 @@ Ghoul2 Insert End
 	{ &mov_absorbColour,	"mov_absorbColour",		"0",			NULL,	CVAR_ARCHIVE	},
 	{ &mov_protectColour,	"mov_protectColour",	"0",			NULL,	CVAR_ARCHIVE	},
 	{ &mov_rageColour,		"mov_rageColour",		"0",			NULL,	CVAR_ARCHIVE	},
+	{ &mov_6degreesoffreedom,"mov_6degreesoffreedom","0",			NULL,	CVAR_ARCHIVE	},
 	{ &fx_Vibrate,			"fx_Vibrate",			"1",			NULL,	CVAR_ARCHIVE	},
 	{ &fx_vfps,				"fx_vfps",				"1000",			NULL,	CVAR_ARCHIVE	},
 	{ &fx_disruptTime,		"fx_disruptTime",		"-1",			NULL,	CVAR_ARCHIVE	},	//from smod

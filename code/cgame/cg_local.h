@@ -1746,6 +1746,8 @@ extern	vmCvar_t	mov_absorbColour;
 extern	vmCvar_t	mov_protectColour;
 extern	vmCvar_t	mov_rageColour;
 
+extern	vmCvar_t	mov_6degreesoffreedom;
+
 extern	vmCvar_t	mme_demoFileName;
 
 extern	vmCvar_t	fx_Vibrate;

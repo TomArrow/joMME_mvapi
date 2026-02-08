@@ -832,11 +832,22 @@ void demoMoveChase(void) {
 		target = &demo.chase.target;
 	}
 	if (demo.cmd.buttons & BUTTON_ATTACK) {
+		Quat_t q1, q2, qr;
 		/* First clear some related values */
 		if (!(demo.oldcmd.buttons & BUTTON_ATTACK)) {
 			VectorClear( demo.chase.velocity );
 		}
-		VectorAdd( angles, demo.cmdDeltaAngles, angles );
+		if (!mov_6degreesoffreedom.integer) {
+			VectorAdd(angles, demo.cmdDeltaAngles, angles);
+		}
+		else {
+			// ent's 6 degrees of freedom fix:
+			QuatFromAngles(angles, q1);
+			QuatFromAngles(demo.cmdDeltaAngles, q2);
+			QuatMultiply(q1, q2, qr);
+			QuatToAngles(qr, angles);
+		}
+
 		AnglesNormalize180( angles );
 		demoMovePoint( origin, demo.chase.velocity, angles );
 	} else if (demo.cmd.buttons & BUTTON_ALT_ATTACK && !(demo.oldcmd.buttons & BUTTON_ALT_ATTACK)) {
