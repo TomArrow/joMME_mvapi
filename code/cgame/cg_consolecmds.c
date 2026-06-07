@@ -384,6 +384,49 @@ static void CG_StartOrbit_f( void ) {
 	}
 }
 
+
+void CG_ClientList_f( void )
+{
+	clientInfo_t *ci;
+	int i;
+	int count = 0;
+
+	for( i = 0; i < MAX_CLIENTS; i++ ) 
+	{
+		ci = &cgs.clientinfo[ i ];
+		if( !ci->infoValid ) 
+			continue;
+
+		switch( ci->team ) 
+		{
+		case TEAM_FREE:
+			CG_Printf( "%2d " S_COLOR_YELLOW "F   " S_COLOR_WHITE "%s" S_COLOR_WHITE "%s\n", i,
+				ci->name, (ci->botSkill != 0) ? " (bot)" : "" );
+ 			break;
+ 
+		case TEAM_RED:
+			CG_Printf( "%2d " S_COLOR_RED "R   " S_COLOR_WHITE "%s" S_COLOR_WHITE "%s\n", i,
+				ci->name, (ci->botSkill != 0) ? " (bot)" : "" );
+			break;
+
+		case TEAM_BLUE:
+			CG_Printf( "%2d " S_COLOR_BLUE "B   " S_COLOR_WHITE "%s" S_COLOR_WHITE "%s\n", i,
+				ci->name, (ci->botSkill != 0) ? " (bot)" : "" );
+			break;
+
+		default:
+		case TEAM_SPECTATOR:
+			CG_Printf( "%2d " S_COLOR_YELLOW "S   " S_COLOR_WHITE "%s" S_COLOR_WHITE "%s\n", i,
+				ci->name, (ci->botSkill != 0) ? " (bot)" : "" );
+			break;
+		}
+
+		count++;
+	}
+
+	CG_Printf( "Listed %2d clients\n", count );
+}
+
 /*
 static void CG_Camera_f( void ) {
 	char name[1024];
@@ -452,7 +495,8 @@ static consoleCommand_t	commands[] = {
 	{ "invnext", CG_NextInventory_f },
 	{ "invprev", CG_PrevInventory_f },
 	{ "forcenext", CG_NextForcePower_f },
-	{ "forceprev", CG_PrevForcePower_f }
+	{ "forceprev", CG_PrevForcePower_f },
+	{ "clientlist", CG_ClientList_f }
 };
 
 
