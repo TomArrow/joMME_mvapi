@@ -3586,6 +3586,10 @@ static qboolean CG_DrawFollow( void )
 {
 	char	*s;
 
+	if (!cg_drawFollowing.integer) {
+		return qfalse;
+	}
+
 	if ( !(cg.snap->ps.pm_flags & PMF_FOLLOW) ) 
 	{
 		return qfalse;
